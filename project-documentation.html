@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network Project Documentation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-700);
+            background: #0b0f14;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: transparent;
+            color: var(--text-900);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 15px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.85;
+        }
+        
+        .section {
+            background: var(--surface);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section h2 {
+            color: var(--text-900);
+            margin-bottom: 25px;
+            font-size: 2rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--brand-500);
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: var(--text-900);
+            margin: 25px 0 15px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .section ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .code-block {
+            background: #0f1b24;
+            color: #cfe9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            box-shadow: 0 0 0 1px rgba(0,229,255,0.15) inset, 0 0 24px rgba(0,229,255,0.08);
+        }
+        
+        .file-structure {
+            background: rgba(255,255,255,0.03);
+            border: 2px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--brand-500);
+        }
+        
+        .feature-card h4 {
+            color: var(--text-900);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--text-500);
+            font-size: 1rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+            color: #001014;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .tech-item:nth-child(2) { background: linear-gradient(135deg, #ff6b6b, #ef4444); color: #0b0f14; }
+        .tech-item:nth-child(3) { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #0b0f14; }
+        .tech-item:nth-child(4) { background: linear-gradient(135deg, #34d399, #10b981); color: #0b0f14; }
+        .tech-item:nth-child(5) { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: #0b0f14; }
+        
+        .highlight {
+            background: rgba(251, 191, 36, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .highlight strong {
+            color: #fde68a;
+        }
+        
+        .navigation {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .navigation h3 {
+            color: var(--text-900);
+            margin-bottom: 15px;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .nav-link {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+            color: #001014;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 25px 20px;
+            }
+            
+            .tech-stack {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header parallax-hero card-3d glass elevate-lg tilt-hover reveal">
+            <h1>Social Network System</h1>
+            <p>A complete web application built with PHP, MySQL, jQuery, HTML, and CSS</p>
+        </div>
+        
+        <div class="navigation card-3d elevate-md tilt-hover reveal">
+            <h3>Quick Navigation</h3>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">🏠 Home</a>
+                <a href="login.html" class="nav-link">🔐 Login</a>
+                <a href="signup.html" class="nav-link">📝 Sign Up</a>
+                <a href="profile.html" class="nav-link">👤 Profile</a>
+            </div>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>📋 Project Overview</h2>
+            <p>This social network system is a comprehensive web application that demonstrates modern web development practices using PHP, MySQL, jQuery, HTML, and CSS. The project follows Object-Oriented Programming principles and includes all essential features of a social networking platform.</p>
+            
+            <div class="highlight">
+                <strong>Key Features:</strong> User registration, secure authentication, profile management, post creation, real-time interactions, responsive design, and AJAX functionality.
+            </div>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>🛠️ Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">PHP 7.4+</div>
+                <div class="tech-item">MySQL 5.7+</div>
+                <div class="tech-item">jQuery 3.6</div>
+                <div class="tech-item">HTML5</div>
+                <div class="tech-item">CSS3</div>
+            </div>
+            
+            <h3>Backend Technologies</h3>
+            <ul>
+                <li><strong>PHP:</strong> Server-side scripting with OOP approach</li>
+                <li><strong>MySQL:</strong> Relational database management</li>
+                <li><strong>PDO:</strong> Secure database connections with prepared statements</li>
+                <li><strong>Session Management:</strong> Secure user authentication</li>
+            </ul>
+            
+            <h3>Frontend Technologies</h3>
+            <ul>
+                <li><strong>HTML5:</strong> Semantic markup and modern structure</li>
+                <li><strong>CSS3:</strong> Responsive design with Flexbox and Grid</li>
+                <li><strong>jQuery:</strong> DOM manipulation and AJAX requests</li>
+                <li><strong>JavaScript:</strong> Client-side validation and interactions</li>
+            </ul>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>📁 Project Structure</h2>
+            <div class="file-structure">
+├── api/                          # AJAX endpoints
+│   ├── add_post.php             # Add new posts
+│   ├── delete_post.php          # Delete posts
+│   └── react_post.php          # Like/dislike functionality
+├── assets/                      # Static assets
+│   ├── css/
+│   │   └── style.css           # Main stylesheet
+│   └── js/
+│       ├── validation.js       # Form validation
+│       └── profile.js          # Profile interactions
+├── classes/                     # PHP OOP classes
+│   ├── User.php                # User management
+│   └── Post.php                # Post management
+├── config/                     # Configuration files
+│   └── database.php            # Database connection
+├── sql/                        # Database schema
+│   └── schema.sql              # Database structure
+├── uploads/                    # File storage
+│   ├── profiles/               # Profile pictures
+│   └── posts/                  # Post images
+├── index.html                  # Landing page
+├── login.html                  # Login page
+├── signup.html                 # Registration page
+├── profile.html                # User dashboard
+└── README.md                   # Project documentation
+            </div>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>✨ Core Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card tilt-hover reveal">
+                    <h4>👤 User Management</h4>
+                    <p>Complete user registration and authentication system with secure password hashing, email validation, and profile management.</p>
+                </div>
+                
+                <div class="feature-card tilt-hover reveal">
+                    <h4>📝 Post Creation</h4>
+                    <p>Users can create posts with text descriptions and optional images. All posts are stored securely in the database.</p>
+                </div>
+                
+                <div class="feature-card tilt-hover reveal">
+                    <h4>👍 Social Interactions</h4>
+                    <p>Real-time like and dislike system with AJAX updates. Users can interact with posts without page reloads.</p>
+                </div>
+                
+                <div class="feature-card tilt-hover reveal">
+                    <h4>🔒 Security Features</h4>
+                    <p>SQL injection prevention, XSS protection, secure file uploads, and input sanitization throughout the application.</p>
+                </div>
+                
+                <div class="feature-card tilt-hover reveal">
+                    <h4>📱 Responsive Design</h4>
+                    <p>Mobile-first design that works perfectly on all devices with modern CSS Grid and Flexbox layouts.</p>
+                </div>
+                
+                <div class="feature-card tilt-hover reveal">
+                    <h4>⚡ AJAX Functionality</h4>
+                    <p>Smooth user experience with real-time updates for posts, likes, and profile changes without page refreshes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>🗄️ Database Design</h2>
+            <h3>Users Table</h3>
+            <div class="code-block">
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    profile_picture VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+            </div>
+            
+            <h3>Posts Table</h3>
+            <div class="code-block">
+CREATE TABLE posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(255),
+    likes INT DEFAULT 0,
+    dislikes INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+            </div>
+            
+            <h3>Post Reactions Table</h3>
+            <div class="code-block">
+CREATE TABLE post_reactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    reaction_type ENUM('like', 'dislike') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_reaction (post_id, user_id)
+);
+            </div>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>🚀 Getting Started</h2>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>PHP 7.4 or higher</li>
+                <li>MySQL 5.7 or higher</li>
+                <li>Web server (Apache/Nginx)</li>
+                <li>Modern web browser</li>
+            </ul>
+            
+            <h3>Installation Steps</h3>
+            <ol>
+                <li><strong>Clone/Download:</strong> Place all files in your web server directory</li>
+                <li><strong>Database Setup:</strong> Import the schema from <code>sql/schema.sql</code></li>
+                <li><strong>Configuration:</strong> Update database credentials in <code>config/database.php</code></li>
+                <li><strong>Permissions:</strong> Ensure <code>uploads/</code> directory is writable</li>
+                <li><strong>Access:</strong> Navigate to <code>index.html</code> in your browser</li>
+            </ol>
+            
+            <div class="highlight">
+                <strong>Note:</strong> Make sure to update the database connection settings in <code>config/database.php</code> to match your MySQL configuration.
+            </div>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>🎯 Key Implementation Details</h2>
+            <h3>Object-Oriented Programming</h3>
+            <p>The project follows OOP principles with well-structured classes:</p>
+            <ul>
+                <li><strong>User Class:</strong> Handles user registration, authentication, and profile management</li>
+                <li><strong>Post Class:</strong> Manages post creation, deletion, and reaction tracking</li>
+                <li><strong>Database Class:</strong> Centralized database connection management</li>
+            </ul>
+            
+            <h3>Security Implementation</h3>
+            <ul>
+                <li><strong>Password Hashing:</strong> Using PHP's <code>password_hash()</code> with bcrypt</li>
+                <li><strong>SQL Injection Prevention:</strong> All queries use prepared statements</li>
+                <li><strong>File Upload Security:</strong> Type and size validation for uploaded files</li>
+                <li><strong>Input Sanitization:</strong> All user inputs are properly sanitized</li>
+            </ul>
+            
+            <h3>AJAX Implementation</h3>
+            <ul>
+                <li><strong>Post Management:</strong> Add and delete posts without page reload</li>
+                <li><strong>Real-time Reactions:</strong> Like/dislike updates instantly</li>
+                <li><strong>Form Validation:</strong> Client-side validation with server-side backup</li>
+            </ul>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>📱 Responsive Design</h2>
+            <p>The application is fully responsive and works seamlessly across all devices:</p>
+            <ul>
+                <li><strong>Mobile First:</strong> Designed for mobile devices first, then enhanced for larger screens</li>
+                <li><strong>Flexible Layouts:</strong> CSS Grid and Flexbox for modern, flexible layouts</li>
+                <li><strong>Touch Friendly:</strong> Large buttons and touch targets for mobile users</li>
+                <li><strong>Cross Browser:</strong> Compatible with all modern browsers</li>
+            </ul>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>🔧 Customization</h2>
+            <p>The project is designed to be easily customizable:</p>
+            <ul>
+                <li><strong>Styling:</strong> Modify <code>assets/css/style.css</code> for custom themes</li>
+                <li><strong>Functionality:</strong> Extend classes in <code>classes/</code> directory</li>
+                <li><strong>Database:</strong> Add new tables and relationships as needed</li>
+                <li><strong>Features:</strong> Add new AJAX endpoints in <code>api/</code> directory</li>
+            </ul>
+        </div>
+        
+        <div class="section card-3d elevate-md tilt-hover reveal">
+            <h2>📞 Support & Documentation</h2>
+            <p>This project includes comprehensive documentation and is ready for demonstration. All code is well-commented and follows best practices for maintainability and scalability.</p>
+            
+            <div class="highlight">
+                <strong>Ready for Demo:</strong> The application is fully functional and ready for presentation. All features work as specified in the requirements.
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/animation.js"></script>
+</body>
+</html>

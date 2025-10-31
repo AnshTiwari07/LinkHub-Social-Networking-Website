@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network - Welcome</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .welcome-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+        
+        .welcome-card {
+            background: transparent;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: none;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .welcome-card h1 {
+            color: var(--text-900);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .welcome-card p {
+            color: var(--text-700);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .welcome-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .welcome-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        
+        .welcome-btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .welcome-btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .welcome-btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .welcome-btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(149, 165, 166, 0.3);
+        }
+        
+        .features {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            color: var(--text-900);
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: var(--text-500);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-card {
+                padding: 40px 20px;
+            }
+            
+            .welcome-card h1 {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .welcome-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container parallax-hero">
+        <div class="welcome-card card-3d elevate-lg radius-lg glass tilt-hover reveal">
+            <h1 class="float-y">Social Network</h1>
+            <p>Connect with friends, share your thoughts, and discover what's happening around you.</p>
+
+            <div class="welcome-buttons">
+                <a href="login.php" class="welcome-btn welcome-btn-primary">Login</a>
+                <a href="signup.php" class="welcome-btn welcome-btn-secondary">Sign Up</a>
+            </div>
+
+            <div class="features">
+                <div class="feature tilt-hover reveal">
+                    <div class="feature-icon">👤</div>
+                    <h3>User Profiles</h3>
+                    <p>Create and manage your personal profile</p>
+                </div>
+                <div class="feature tilt-hover reveal" style="transition-delay: 80ms;">
+                    <div class="feature-icon">📝</div>
+                    <h3>Share Posts</h3>
+                    <p>Share your thoughts with images and text</p>
+                </div>
+                <div class="feature tilt-hover reveal" style="transition-delay: 160ms;">
+                    <div class="feature-icon">👍</div>
+                    <h3>Interact</h3>
+                    <p>Like and dislike posts in real-time</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="assets/js/animation.js"></script>
+</html>
+

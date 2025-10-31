@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Social Network</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .profile-container {
+            min-height: 100vh;
+            background: transparent;
+            padding: 20px;
+        }
+        
+        .header {
+            background: transparent;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: none;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            color: var(--text-900);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-info span {
+            font-weight: 600;
+            color: var(--text-700);
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #2a3444, #1c2433);
+            color: #e5e7eb;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        
+        .profile-section {
+            margin-bottom: 40px;
+        }
+        
+        .profile-card {
+            background: transparent;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: none;
+            margin-bottom: 30px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .profile-picture {
+            margin-right: 25px;
+        }
+        
+        .profile-picture img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--brand-500);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35), 0 0 16px rgba(0,229,255,0.18);
+        }
+        
+        .profile-info h2 {
+            color: var(--text-900);
+            margin-bottom: 8px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .profile-info p {
+            color: var(--text-500);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .profile-actions {
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+            color: #001014;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .posts-section {
+            background: transparent;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: none;
+        }
+        
+        .posts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .posts-header h3 {
+            color: var(--text-900);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .posts-container {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .post-card {
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 15px;
+            padding: 25px;
+            background: rgba(255,255,255,0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.35), 0 0 14px rgba(0, 229, 255, 0.1);
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .post-user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--brand-500);
+        }
+        
+        .post-user-info h4 {
+            margin: 0;
+            color: var(--text-900);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .post-user-info small {
+            color: var(--text-500);
+            font-size: 0.9rem;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+        
+        .post-content {
+            margin-bottom: 20px;
+        }
+        
+        .post-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            color: var(--text-700);
+        }
+        
+        .post-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.35), 0 0 12px rgba(0,229,255,0.12);
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-like {
+            background: linear-gradient(135deg, #27ae60, #199d54);
+            color: #e5e7eb;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        .btn-like:hover {
+            background: #229954;
+            transform: translateY(-1px);
+        }
+        
+        .btn-dislike {
+            background: linear-gradient(135deg, #e74c3c, #d13f31);
+            color: #e5e7eb;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        .btn-dislike:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+        
+        .btn-like.active,
+        .btn-dislike.active {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: var(--surface);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .modal h3 {
+            color: var(--text-900);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-700);
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.03);
+            color: var(--text-900);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-500);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 10px;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-picture {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .posts-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .post-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .post-actions {
+                justify-content: center;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <header class="header card-3d elevate-lg glass tilt-hover reveal">
+            <h1>Social Network</h1>
+            <div class="user-info">
+                <span>Welcome, Ansh</span>
+                <a href="logout.php" class="btn btn-secondary">Logout</a>
+            </div>
+        </header>
+        
+        <div class="profile-section">
+            <div class="profile-card card-3d elevate-md tilt-hover reveal">
+                <div class="profile-header">
+                    <div class="profile-picture">
+                        <img src="Images\unnamed (9).png" onerror="this.onerror=null;this.src='uploads/profiles/default.png';"
+                            alt="Profile Picture" id="profile-img">
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profile-name">Ansh</h2>
+                        <p id="profile-email">anshtiwari945@gmail.com</p>
+                        <p id="profile-age">Age: <span id="age-value">22</span></p>
+                        <p><b>Full Stack Web Developer</b></p>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button class="btn btn-primary" id="edit-profile-btn">Edit Profile</button>
+                </div>
+            </div>
+            
+            <!-- Edit Profile Modal -->
+            <div class="modal" id="edit-profile-modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Edit Profile</h3>
+                    
+                    <form method="POST" enctype="multipart/form-data" id="edit-profile-form">
+                        <input type="hidden" name="action" value="update_profile">
+                        
+                        <div class="form-group">
+                            <label for="edit_full_name">Full Name</label>
+                            <input type="text" id="edit_full_name" name="full_name" 
+                                   value="John Doe" required>
+                            <span class="error" id="edit_full_name_error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_age">Age</label>
+                            <input type="number" id="edit_age" name="age" 
+                                   value="25" min="1" max="150" required>
+                            <span class="error" id="edit_age_error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_profile_picture">Profile Picture</label>
+                            <input type="file" id="edit_profile_picture" name="profile_picture" accept="image/*">
+                            <span class="error" id="edit_profile_picture_error"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="posts-section card-3d elevate-md reveal">
+            <div class="posts-header">
+                <h3>My Posts</h3>
+                <button class="btn btn-primary" id="add-post-btn">Add New Post</button>
+            </div>
+            
+            <!-- Add Post Modal -->
+            <div class="modal" id="add-post-modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Add New Post</h3>
+                    
+                    <form id="add-post-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="post_description">Description</label>
+                            <textarea id="post_description" name="description" rows="4" 
+                                      placeholder="What's on your mind?" required></textarea>
+                            <span class="error" id="post_description_error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="post_image">Image (Optional)</label>
+                            <input type="file" id="post_image" name="image" accept="image/*">
+                            <span class="error" id="post_image_error"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Add Post</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="posts-container" id="posts-container">
+                <!-- Sample Post 1 -->
+                <div class="post-card tilt-hover reveal" data-post-id="1">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="Images\unnamed (9).png" 
+                                 alt="Profile Picture" class="post-user-avatar">
+                            <div>
+                                <h4>Ansh</h4>
+                                <small>2 hours ago</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger btn-sm delete-post" data-post-id="1">Delete</button>
+                    </div>
+                    
+                    <div class="post-content">
+                        <p>Just finished an amazing coding session! Building this social network has been such a great learning experience. The OOP principles really make the code clean and maintainable.</p>
+                        <img src="Images\OIP (1).webp" height="200px" width="300px" 
+                            alt="Post Image" class="post-image">
+            
+                    </div>
+                    
+                    <div class="post-actions">
+                        <button class="btn btn-like" data-post-id="1" data-reaction="like">
+                            👍 Like (<span class="like-count">5</span>)
+                        </button>
+                        <button class="btn btn-dislike" data-post-id="1" data-reaction="dislike">
+                            👎 Dislike (<span class="dislike-count">1</span>)
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Sample Post 2 -->
+                <div class="post-card tilt-hover reveal" data-post-id="2">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="Images\unnamed (9).png" 
+                                 alt="Profile Picture" class="post-user-avatar">
+                            <div>
+                                <h4>Ansh</h4>
+                                <small>12 day ago</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger btn-sm delete-post" data-post-id="2">Delete</button>
+                    </div>
+                    
+                    <div class="post-content">
+                        <p>Beautiful sunset today! Sometimes you need to step away from the computer and enjoy the simple things in life. Nature has a way of inspiring creativity.</p>
+                    </div>
+                    
+                    <div class="post-actions">
+                        <button class="btn btn-like" data-post-id="2" data-reaction="like">
+                            👍 Like (<span class="like-count">12</span>)
+                        </button>
+                        <button class="btn btn-dislike" data-post-id="2" data-reaction="dislike">
+                            👎 Dislike (<span class="dislike-count">0</span>)
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Sample Post 3 -->
+                <div class="post-card tilt-hover reveal" data-post-id="3">
+                    <div class="post-header">
+                        <div class="post-user-info">
+                            <img src="Images\unnamed (9).png" 
+                                 alt="Profile Picture" class="post-user-avatar">
+                            <div>
+                                <h4>Ansh</h4>
+                                <small>2 months ago</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-danger btn-sm delete-post" data-post-id="3">Delete</button>
+                    </div>
+                    
+                    <div class="post-content">
+                        <p>Working on a new project using PHP, MySQL, and jQuery. The combination of server-side and client-side technologies creates such powerful web applications!</p>
+                        <img src="Images\PreviewThemes.gif" width="300px" height="2000px"
+                            alt="Post Image" class="post-image">
+                            
+                    </div>
+                    
+                    <div class="post-actions">
+                        <button class="btn btn-like" data-post-id="3" data-reaction="like">
+                            👍 Like (<span class="like-count">8</span>)
+                        </button>
+                        <button class="btn btn-dislike" data-post-id="3" data-reaction="dislike">
+                            👎 Dislike (<span class="dislike-count">2</span>)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/profile.js"></script>
+    <script src="assets/js/animation.js"></script>
+</body>
+</html>
+

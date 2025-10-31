@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Social Network</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-form {
+            background: transparent;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: none;
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-900);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-700);
+            font-size: 1.1rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.03);
+            color: var(--text-900);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--brand-500);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12);
+        }
+        
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+            color: #001014;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .auth-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .auth-link a {
+            color: var(--brand-500);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-link a:hover {
+            color: var(--brand-600);
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #f8f9fa;
+            transform: translateX(-5px);
+        }
+        
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 10px;
+            }
+            
+            .login-form {
+                padding: 30px 20px;
+            }
+            
+            .login-form h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container parallax-hero">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="login-form card-3d glass elevate-lg tilt-hover reveal">
+            <h2>Welcome Back</h2>
+            <p class="welcome-text">Sign in to your account to continue</p>
+            
+            <form method="POST" id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="Enter your email address">
+                    <span class="error" id="email_error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Enter your password">
+                    <span class="error" id="password_error"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            
+            <p class="auth-link">
+                Don't have an account? <a href="signup.html">Sign up here</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/animation.js"></script>
+</body>
+</html>
+

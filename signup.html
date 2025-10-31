@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Social Network</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .signup-container {
+            min-height: 100vh;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .signup-form {
+            background: transparent;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: none;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .signup-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-900);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-700);
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.03);
+            color: var(--text-900);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--brand-500);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12);
+        }
+        
+        .form-group input[type="file"] {
+            padding: 10px;
+            background: rgba(255,255,255,0.02);
+            border: 2px dashed var(--brand-500);
+            cursor: pointer;
+        }
+        
+        .form-group input[type="file"]:hover {
+            border-color: var(--brand-600);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+            color: #001014;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        
+        .alert-success {
+            background: rgba(16, 185, 129, 0.12);
+            color: #a7f3d0;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+        
+        .alert-error {
+            background: rgba(239, 68, 68, 0.12);
+            color: #fecaca;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+        
+        .auth-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .auth-link a {
+            color: var(--brand-500);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-link a:hover {
+            color: var(--brand-600);
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #f8f9fa;
+            transform: translateX(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 10px;
+            }
+            
+            .signup-form {
+                padding: 30px 20px;
+            }
+            
+            .signup-form h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container parallax-hero">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <div class="signup-form card-3d glass elevate-lg tilt-hover reveal">
+            <h2>Join Our Community</h2>
+            
+            <form method="POST" enctype="multipart/form-data" id="signupForm">
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" required 
+                           placeholder="Enter your full name">
+                    <span class="error" id="full_name_error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="Enter your email address">
+                    <span class="error" id="email_error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Create a strong password">
+                    <span class="error" id="password_error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="1" max="150" required 
+                           placeholder="Enter your age">
+                    <span class="error" id="age_error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile_picture">Profile Picture</label>
+                    <input type="file" id="profile_picture" name="profile_picture" 
+                           accept="image/*" placeholder="Choose a profile picture">
+                    <span class="error" id="profile_picture_error"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+            
+            <p class="auth-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/animation.js"></script>
+</body>
+</html>
+
